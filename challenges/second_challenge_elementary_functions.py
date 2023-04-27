@@ -1,9 +1,12 @@
 from functools import reduce
 
 
-def arg_validator(arr):
+def list_validator(arr):
     if not isinstance(arr, list):
-        raise ValueError('Você precisa informar uma lista!')
+        raise TypeError('Você precisa informar uma lista!')
+
+    if not all([isinstance(i, (int, float)) for i in arr]):
+        raise ValueError('Todos os valores precisam ser numéricos!')
 
     if len(arr) == 0:
         return 0
@@ -12,42 +15,29 @@ def arg_validator(arr):
         return arr[0]
 
 
-def add(arr):
-    validate = arg_validator(arr)
+def exec(arr, reduce_lambda):
+    validate = list_validator(arr)
 
     return validate \
         if validate is not None \
-        else reduce(lambda a, b: a + b, arr)
-
-
-def sub(arr):
-    validate = arg_validator(arr)
-
-    return validate \
-        if validate is not None \
-        else reduce(lambda a, b: a - b, arr)
+        else reduce(reduce_lambda, arr)
 
 
 def div(a, b):
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise TypeError('Ambos os valores precisam ser numéricos!')
+
     if b == 0:
-        raise ValueError('Não se pode fazer divisão por 0!')
+        raise ZeroDivisionError('Não é possível dividir por 0!')
 
     return a / b
 
 
-def mul(arr):
-    validate = arg_validator(arr)
-
-    return validate \
-        if validate is not None \
-        else reduce(lambda a, b: a * b, arr)
-
-
 math = {
-    "add": add,
-    "sub": sub,
+    "add": lambda arr: exec(arr, lambda a, b: a + b),
+    "sub": lambda arr: exec(arr, lambda a, b: a - b),
     "div": div,
-    "mul": mul,
+    "mul": lambda arr: exec(arr, lambda a, b: a * b),
 }
 
 
