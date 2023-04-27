@@ -1,30 +1,53 @@
+from functools import reduce
+
+
+def arg_validator(arr):
+    if not isinstance(arr, list):
+        raise ValueError('Você precisa informar uma lista!')
+
+    if len(arr) == 0:
+        return 0
+
+    if len(arr) == 1:
+        return arr[0]
+
+
+def add(arr):
+    value_to_return = arg_validator(arr)
+
+    if value_to_return is not None:
+        return value_to_return
+
+    return reduce(lambda a, b: a + b, arr)
+
+
 def sub(arr):
-    initial_value = arr[0]
+    value_to_return = arg_validator(arr)
 
-    for i in arr[1:]:
-        initial_value -= i
+    if value_to_return is not None:
+        return value_to_return
 
-    return initial_value
+    return reduce(lambda a, b: a - b, arr)
 
 
 def div(a, b):
-    if 0 in [a, b]:
-        return "null"
+    if b == 0:
+        raise ValueError('Não se pode fazer divisão por 0!')
 
     return a / b
 
 
 def mul(arr):
-    initial_value = 1
+    value_to_return = arg_validator(arr)
 
-    for i in arr:
-        initial_value *= i
+    if value_to_return is not None:
+        return value_to_return
 
-    return initial_value
+    return reduce(lambda a, b: a * b, arr)
 
 
 math = {
-    "add": lambda arr: sum(arr),
+    "add": add,
     "sub": sub,
     "div": div,
     "mul": mul,
