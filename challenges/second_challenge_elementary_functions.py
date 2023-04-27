@@ -13,21 +13,19 @@ def arg_validator(arr):
 
 
 def add(arr):
-    value_to_return = arg_validator(arr)
+    validate = arg_validator(arr)
 
-    if value_to_return is not None:
-        return value_to_return
-
-    return reduce(lambda a, b: a + b, arr)
+    return validate \
+        if validate is not None \
+        else reduce(lambda a, b: a + b, arr)
 
 
 def sub(arr):
-    value_to_return = arg_validator(arr)
+    validate = arg_validator(arr)
 
-    if value_to_return is not None:
-        return value_to_return
-
-    return reduce(lambda a, b: a - b, arr)
+    return validate \
+        if validate is not None \
+        else reduce(lambda a, b: a - b, arr)
 
 
 def div(a, b):
@@ -38,12 +36,11 @@ def div(a, b):
 
 
 def mul(arr):
-    value_to_return = arg_validator(arr)
+    validate = arg_validator(arr)
 
-    if value_to_return is not None:
-        return value_to_return
-
-    return reduce(lambda a, b: a * b, arr)
+    return validate \
+        if validate is not None \
+        else reduce(lambda a, b: a * b, arr)
 
 
 math = {
