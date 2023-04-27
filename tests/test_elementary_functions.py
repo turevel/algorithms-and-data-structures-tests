@@ -28,7 +28,7 @@ def test_div_function():
     assert math['div'](0, 12) == 0
 
     with pytest.raises(ValueError):
-        assert math['div'](3, 0) == 0
+        assert math['div'](3, 0)
 
 
 def test_mul_function():
