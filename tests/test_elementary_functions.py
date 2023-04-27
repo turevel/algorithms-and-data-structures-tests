@@ -8,8 +8,11 @@ def test_add_function():
     assert math['add']([1]) == 1
     assert math['add']([]) == 0
 
-    with pytest.raises(ValueError):
+    with pytest.raises(TypeError):
         math['add'](12)
+
+    with pytest.raises(ValueError):
+        math['add']([1, 2, 3, '4'])
 
 
 def test_sub_function():
@@ -18,8 +21,11 @@ def test_sub_function():
     assert math['sub']([1]) == 1
     assert math['sub']([]) == 0
 
+    with pytest.raises(TypeError):
+        math['add'](12)
+
     with pytest.raises(ValueError):
-        math['sub'](12)
+        math['add']([1, 2, 3, '4'])
 
 
 def test_div_function():
@@ -27,8 +33,11 @@ def test_div_function():
     assert math['div'](22, 2) == 11
     assert math['div'](0, 12) == 0
 
-    with pytest.raises(ValueError):
+    with pytest.raises(ZeroDivisionError):
         assert math['div'](3, 0)
+
+    with pytest.raises(TypeError):
+        math['div'](12, '4')
 
 
 def test_mul_function():
@@ -37,5 +46,8 @@ def test_mul_function():
     assert math['mul']([1]) == 1
     assert math['mul']([]) == 0
 
+    with pytest.raises(TypeError):
+        math['add'](12)
+
     with pytest.raises(ValueError):
-        assert math['mul'](12)
+        math['add']([1, 2, 3, '4'])
