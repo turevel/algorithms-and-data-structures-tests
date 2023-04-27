@@ -22,10 +22,10 @@ def test_sub_function():
     assert math['sub']([]) == 0
 
     with pytest.raises(TypeError):
-        math['add'](12)
+        math['sub'](12)
 
     with pytest.raises(ValueError):
-        math['add']([1, 2, 3, '4'])
+        math['sub']([1, 2, 3, '4'])
 
 
 def test_div_function():
@@ -47,7 +47,7 @@ def test_mul_function():
     assert math['mul']([]) == 0
 
     with pytest.raises(TypeError):
-        math['add'](12)
+        math['mul'](12)
 
     with pytest.raises(ValueError):
-        math['add']([1, 2, 3, '4'])
+        math['mul']([1, 2, 3, '4'])
