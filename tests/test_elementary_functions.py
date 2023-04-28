@@ -3,7 +3,7 @@ from challenges.second_challenge_elementary_functions import math
 
 
 def test_add_function():
-    add = math['add']
+    add = math["add"]
 
     assert add([2, 3, 5, 7, 9]) == 26
     assert add([20, -4, 7, 6, 2]) == 31
@@ -14,11 +14,11 @@ def test_add_function():
         add(12)
 
     with pytest.raises(ValueError):
-        add([1, 2, 3, '4'])
+        add([1, 2, 3, "4"])
 
 
 def test_sub_function():
-    sub = math['sub']
+    sub = math["sub"]
 
     assert sub([8, 2, 1, 3, 5]) == -3
     assert sub([20, -4, 7, 6, 2]) == 9
@@ -29,11 +29,11 @@ def test_sub_function():
         sub(12)
 
     with pytest.raises(ValueError):
-        sub([1, 2, 3, '4'])
+        sub([1, 2, 3, "4"])
 
 
 def test_div_function():
-    div = math['div']
+    div = math["div"]
 
     assert div(9, 3) == 3
     assert div(22, 2) == 11
@@ -43,11 +43,11 @@ def test_div_function():
         assert div(3, 0)
 
     with pytest.raises(TypeError):
-        div(12, '4')
+        div(12, "4")
 
 
 def test_mul_function():
-    mul = math['mul']
+    mul = math["mul"]
 
     assert mul([3, 4, 2, 9]) == 216
     assert mul([11, 2, 7, 6]) == 924
@@ -58,4 +58,4 @@ def test_mul_function():
         mul(12)
 
     with pytest.raises(ValueError):
-        mul([1, 2, 3, '4'])
+        mul([1, 2, 3, "4"])
