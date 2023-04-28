@@ -1,5 +1,8 @@
 from functools import reduce
 
+ZERO = 0
+ONE = 1
+
 
 def list_validator(arr):
     if not isinstance(arr, list):
@@ -8,26 +11,24 @@ def list_validator(arr):
     if not all([isinstance(i, (int, float)) for i in arr]):
         raise ValueError('Todos os valores precisam ser numéricos!')
 
-    if len(arr) == 0:
-        return 0
-
-    if len(arr) == 1:
-        return arr[0]
-
 
 def exec(arr, reduce_lambda):
-    validate = list_validator(arr)
+    list_validator(arr)
 
-    return validate \
-        if validate is not None \
-        else reduce(reduce_lambda, arr)
+    if len(arr) == ZERO:
+        return ZERO
+
+    if len(arr) == ONE:
+        return arr[ZERO]
+
+    return reduce(reduce_lambda, arr)
 
 
 def div(a, b):
     if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
         raise TypeError('Ambos os valores precisam ser numéricos!')
 
-    if b == 0:
+    if b == ZERO:
         raise ZeroDivisionError('Não é possível dividir por 0!')
 
     return a / b
